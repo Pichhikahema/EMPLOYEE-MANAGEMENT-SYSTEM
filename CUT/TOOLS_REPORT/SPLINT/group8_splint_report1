@@ -1,0 +1,11 @@
+main.c: (in function main)
+main.c:8:2: Return value (type int) ignored: file_to_list()
+  Result returned by function call is not used. If this is intended, can cast
+  result to (void) to eliminate message. (Use -retvalint to inhibit warning)
+main.c:22:3: Return value (type int) ignored: scanf("%d", &ch)
+main.c:25:12: Unrecognized identifier: admin
+  Identifier used in code has not been declared. (Use -unrecog to inhibit
+  warning)
+main.c:27:12: Return value (type int) ignored: employee()
+main.c:35:2: Return value (type int) ignored: list_to_file()
+

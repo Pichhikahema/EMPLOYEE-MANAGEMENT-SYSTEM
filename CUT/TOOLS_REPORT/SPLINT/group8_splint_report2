@@ -1,0 +1,89 @@
+func.c: (in function add_emp_details)
+func.c:15:23: Function returns with non-null global new referencing null
+                 storage
+  A global variable does not satisfy its annotations when control is
+  transferred. (Use -globstate to inhibit warning)
+   func.c:12:10: Storage new may become null
+func.c:19:8: Test expression for while not boolean, type int: 1
+  Test expression type is not boolean or int. (Use -predboolint to inhibit
+  warning)
+func.c:22:3: Return value (type int) ignored: scanf("%d", &new...
+  Result returned by function call is not used. If this is intended, can cast
+  result to (void) to eliminate message. (Use -retvalint to inhibit warning)
+func.c:25:18: Left operand of && is non-boolean (emp *):
+                 (ptr) && ptr->emp_id != new->emp_id
+  The operand of a boolean operator is not a boolean. Use +ptrnegate to allow !
+  to be used on pointers. (Use -boolops to inhibit warning)
+func.c:25:52: Only storage ptr->next assigned to unqualified (in post loop
+                 increment): ptr = ptr->next
+  The only reference to this storage is transferred to another reference (e.g.,
+  by returning it) that does not have the only annotation. This may lead to a
+  memory leak, since the new reference is not necessarily released. (Use
+  -onlytrans to inhibit warning)
+func.c:26:7: Left operand of && is non-boolean (emp *):
+                (ptr) && ptr->emp_id == new->emp_id
+func.c:43:8: Test expression for while not boolean, type int: 1
+func.c:46:3: Return value (type int) ignored: scanf("%s", new-...
+func.c:62:8: Test expression for while not boolean, type int: 1
+func.c:65:3: Return value (type int) ignored: scanf("%s", new-...
+func.c:81:8: Test expression for while not boolean, type int: 1
+func.c:85:14: Format argument 1 to scanf (%s) expects char * gets char [10] *:
+                 &new->gender
+  Type of parameter is not consistent with corresponding code in format string.
+  (Use -formattype to inhibit warning)
+   func.c:85:11: Corresponding format code
+func.c:85:3: Return value (type int) ignored: scanf("%s", &new...
+func.c:83:8: Variable gender declared but not used
+  A variable is declared but never used. Use /*@unused@*/ in front of
+  declaration to suppress message. (Use -varuse to inhibit warning)
+func.c:100:8: Test expression for while not boolean, type int: 1
+func.c:103:3: Return value (type int) ignored: scanf("%s", new-...
+func.c:113:2: Return value (type int) ignored: scanf("%d", &new...
+func.c:116:17: Access non-existent field no_projects of emp *: new->no_projects
+  Types are incompatible. (Use -type to inhibit warning)
+func.c:116:2: Return value (type int) ignored: scanf("%d", &new...
+func.c:155:3: Implicitly only storage new->next (type struct emp_details *) not
+                 released before assignment: new->next = start
+  A memory leak has been detected. Only-qualified storage is not released
+  before the last reference to it is lost. (Use -mustfreeonly to inhibit
+  warning)
+func.c:155:3: Unqualified storage start assigned to implicitly only:
+                 new->next = start
+  Unqualified storage is transferred in an inconsistent way. (Use
+  -unqualifiedtrans to inhibit warning)
+func.c:160:17: Left operand of && is non-boolean (emp *):
+                  (ptr) && ptr->emp_id < new->emp_id
+func.c:160:61: Only storage ptr->next assigned to unqualified (in post loop
+                  increment): ptr = ptr->next
+func.c:161:3: Implicitly only storage prev->next (type struct emp_details *)
+                 not released before assignment: prev->next = new
+func.c:162:3: Unqualified storage ptr assigned to implicitly only:
+                 new->next = ptr
+func.c:163:2: Variable start is kept in false branch, but not kept in true
+                 branch.
+  The state of a variable is different depending on which branch is taken. This
+  means no annotation can sensibly be applied to the storage. (Use -branchstate
+  to inhibit warning)
+   func.c:163:2: in false branch:
+   func.c:162:3: Storage start becomes kept
+   func.c:163:2: in true branch:
+   func.c:156:3: Storage start becomes owned
+func.c:163:2: Variable prev is kept in false branch, but not kept in true
+                 branch.
+   func.c:163:2: in false branch:
+   func.c:162:3: Storage prev becomes kept
+func.c:166:2: Path with no return in function declared to return int
+  There is a path through a function declared to return a value on which there
+  is no return statement. This means the execution may fall through without
+  returning a meaningful result to the caller. (Use -noret to inhibit warning)
+func.c:166:2: Function returns with global new referencing kept storage
+   func.c:161:3: Storage new becomes kept
+func.c:166:2: Function returns with global ptr referencing kept storage
+   func.c:163:2: Storage ptr becomes kept
+func.c:8:6: Variable exported but not used outside func: start
+  A declaration is exported, but not used outside this module. Declaration can
+  use static qualifier. (Use -exportlocal to inhibit warning)
+func.c:8:13: Variable exported but not used outside func: new
+func.c:8:18: Variable exported but not used outside func: ptr
+func.c:8:23: Variable exported but not used outside func: prev
+
